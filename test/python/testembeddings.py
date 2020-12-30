@@ -16,25 +16,26 @@ class TestEmbeddings(unittest.TestCase):
     Embeddings tests
     """
 
-    def setUp(self):
+    @classmethod
+    def setUpClass(cls):
         """
         Initialize test data.
         """
 
-        self.data = ["US tops 5 million confirmed virus cases",
-                     "Canada's last fully intact ice shelf has suddenly collapsed, forming a Manhattan-sized iceberg",
-                     "Beijing mobilises invasion craft along coast as Taiwan tensions escalate",
-                     "The National Park Service warns against sacrificing slower friends in a bear attack",
-                     "Maine man wins $1M from $25 lottery ticket",
-                     "Make huge profits without work, earn up to $100,000 a day"]
+        cls.data = ["US tops 5 million confirmed virus cases",
+                    "Canada's last fully intact ice shelf has suddenly collapsed, forming a Manhattan-sized iceberg",
+                    "Beijing mobilises invasion craft along coast as Taiwan tensions escalate",
+                    "The National Park Service warns against sacrificing slower friends in a bear attack",
+                    "Maine man wins $1M from $25 lottery ticket",
+                    "Make huge profits without work, earn up to $100,000 a day"]
 
         # Create embeddings model, backed by sentence-transformers & transformers
-        self.embeddings = Embeddings({"method": "transformers",
-                                      "path": "sentence-transformers/bert-base-nli-mean-tokens"})
+        cls.embeddings = Embeddings({"method": "transformers",
+                                     "path": "sentence-transformers/bert-base-nli-mean-tokens"})
 
     def testIndex(self):
         """
-        Test embeddings.index
+        Test index
         """
 
         # Create an index for the list of sections
@@ -47,7 +48,7 @@ class TestEmbeddings(unittest.TestCase):
 
     def testSave(self):
         """
-        Test embeddings.save
+        Test save
         """
 
         # Create an index for the list of sections
@@ -66,7 +67,7 @@ class TestEmbeddings(unittest.TestCase):
 
     def testSimilarity(self):
         """
-        Test embeddings.similarity
+        Test similarity
         """
 
         # Get best matching id
@@ -108,6 +109,16 @@ class TestEmbeddings(unittest.TestCase):
         # Call scoring and index methods
         embeddings.score(data)
         embeddings.index(data)
+
+        # Test search
+        self.assertIsNotNone(embeddings.search("win", 1))
+
+        # Generate temp file path
+        index = os.path.join(tempfile.gettempdir(), "wembeddings")
+
+        # Test save/load
+        embeddings.save(index)
+        embeddings.load(index)
 
         # Test search
         self.assertIsNotNone(embeddings.search("win", 1))

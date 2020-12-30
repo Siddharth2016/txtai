@@ -46,7 +46,7 @@ This project has dependencies that require compiling native code. Windows and ma
 #### Windows
 
 - Install C++ Build Tools - https://visualstudio.microsoft.com/visual-cpp-build-tools/
-- PyTorch Windows binaries are not on PyPI, the following url link must be added when installing
+- PyTorch now has Windows binaries on PyPI and should work with the standard install. But if issues arise, try running the install directly from PyTorch.
 
     ```
     pip install txtai -f https://download.pytorch.org/whl/torch_stable.html
@@ -79,6 +79,7 @@ The examples directory has a series of examples and notebooks giving an overview
 | [Build an Embeddings index from a data source](https://github.com/neuml/txtai/blob/master/examples/03_Build_an_Embeddings_index_from_a_data_source.ipynb)  | Embeddings index from a data source backed by word embeddings | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/neuml/txtai/blob/master/examples/03_Build_an_Embeddings_index_from_a_data_source.ipynb) |
 | [Extractive QA with Elasticsearch](https://github.com/neuml/txtai/blob/master/examples/04_Extractive_QA_with_Elasticsearch.ipynb) | Extractive question-answering with Elasticsearch | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/neuml/txtai/blob/master/examples/04_Extractive_QA_with_Elasticsearch.ipynb) |
 | [Labeling with zero-shot classification](https://github.com/neuml/txtai/blob/master/examples/05_Labeling_with_zero_shot_classification.ipynb) | Labeling with zero-shot classification | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/neuml/txtai/blob/master/examples/05_Labeling_with_zero_shot_classification.ipynb) |
+| [API Gallery](https://github.com/neuml/txtai/blob/master/examples/06_API_Gallery.ipynb) | Using txtai in JavaScript, Java, Rust and Go | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/neuml/txtai/blob/master/examples/06_API_Gallery.ipynb) |
 
 ## Configuration
 
@@ -235,5 +236,8 @@ CONFIG=index.yml uvicorn "txtai.api:app"
 The following programming languages have txtai bindings:
 
 - [JavaScript](https://github.com/neuml/txtai.js)
+- [Java](https://github.com/neuml/txtai.java)
+- [Rust](https://github.com/neuml/txtai.rs)
+- [Go](https://github.com/neuml/txtai.go)
 
-External implementations of txtai bindings welcome, we're happy to add any additional implementations to this list.
+For additional language bindings, please add an issue!

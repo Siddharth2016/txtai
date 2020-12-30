@@ -13,8 +13,8 @@ class TestTokenizer(unittest.TestCase):
 
     def testTokenize(self):
         """
-        Test Tokenizer.tokenize
+        Test tokenize
         """
 
-        self.assertEqual(Tokenizer.tokenize("this is a test"), ["test"])
-        self.assertEqual(Tokenizer.tokenize("abc123 abc 123"), ["abc123", "abc"])
+        self.assertEqual(Tokenizer.tokenize("Y this is a test!"), ["test"])
+        self.assertEqual(Tokenizer.tokenize("abc123 ABC 123"), ["abc123", "abc"])
